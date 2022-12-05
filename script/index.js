@@ -53,8 +53,9 @@ function startCharacterButtons(){
     for(let i = 0; i < deleteButtons.length; i++){
         deleteButtons[i].addEventListener('click', () => {
             const id = deleteButtons[i].parentElement.parentElement.getAttribute('char-id')
-            api.delete('delete-character', id)
-            document.location.reload(true)
+            console.log(api.delete('delete-character', id))
+            let characters = api.get('let ')
+            render(characters)
         })
     }
 
@@ -63,7 +64,8 @@ function startCharacterButtons(){
         editButtons[i].addEventListener('click', () => {
             const id = deleteButtons[i].parentElement.parentElement.getAttribute('char-id')
             editCharacter(id)
-            document.location.reload(true)
+            let characters = api.get('characters')
+            render(characters)
         })
     }
 }
@@ -80,7 +82,7 @@ function editCharacter(id){
         "alive": true
     }
 
-    api.put(`att-character/${id}`, char)
+    console.log(api.put(`att-character/${id}`, char))
 }
 
 function main(){
@@ -105,7 +107,8 @@ function main(){
 
     const newCharacterButton = document.getElementById('new-character-button')
     newCharacterButton.addEventListener('click', () => {
-        location.href = `${location.origin}/spongebob-characters-front-end/new-character.html`
+        console.log(`${location.origin}/new-character.html`)
+        location.href = `${location.origin}/new-character.html`
     })
 }
 

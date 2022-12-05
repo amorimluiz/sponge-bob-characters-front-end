@@ -17,7 +17,7 @@ class API {
     }
     this.#request.send(JSON.stringify(body))
 
-    return this.#request.responseText
+    return JSON.parse(this.#request.responseText)
   }
 
   put(url, body){
@@ -28,17 +28,13 @@ class API {
     }
     this.#request.send(JSON.stringify(body))
 
-    return this.#request.responseText
+    return JSON.parse(this.#request.responseText)
   }
 
   delete(url, id){
-    this.#request.open('DELETE', `${this.#url}/${url}/${id}`, true)
+    this.#request.open('DELETE', `${this.#url}/${url}/${id}`, false)
     this.#request.send()
-
-    this.#request.onload = () => {
-      console.log(this.responseText)
-    }
-    return this.responseText
+    return JSON.parse(this.#request.responseText)
   }
 }
 
