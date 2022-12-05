@@ -4,7 +4,7 @@ const api = new API
 function main(){
   const cancelButton = document.getElementById('cancel-button')
   cancelButton.addEventListener('click', () => {
-    location.href = `${location.origin}/index.html`
+    location.href = "./index.html"
   })
 
   const form = document.getElementById('character-form')

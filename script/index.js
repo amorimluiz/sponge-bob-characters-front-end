@@ -107,8 +107,7 @@ function main(){
 
     const newCharacterButton = document.getElementById('new-character-button')
     newCharacterButton.addEventListener('click', () => {
-        console.log(`${location.origin}/new-character.html`)
-        location.href = `${location.origin}/new-character.html`
+        location.href = "./new-character.html"
     })
 }
 
