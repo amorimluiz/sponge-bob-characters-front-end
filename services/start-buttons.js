@@ -2,7 +2,7 @@ import API from "./api.js"
 const api = new API
 const home = "../index.html"
 
-function startButtons(requisition, url){
+function startButtons(req, url){
   const cancelButton = document.getElementById('cancel-button')
   cancelButton.addEventListener('click', () => {
     location.href = home
@@ -10,12 +10,12 @@ function startButtons(requisition, url){
   const form = document.getElementById('character-form')
   form.addEventListener('submit', () => {
     event.preventDefault()
-    sendRequisition(requisition, url)
+    sendRequest(req, url)
     location.href = home
   })
 }
 
-function sendRequisition(requisition, url){
+function sendRequest(req, url){
   const formData = new FormData(document.getElementById('character-form'))
   const propertys = ['name', 'gender', 'specie', 'profession']
 
@@ -31,16 +31,18 @@ function sendRequisition(requisition, url){
     char['alive'] = Boolean(formData.get('alive'))
   }
 
-  if(requisition == 'PUT'){
+  makeRequest(req, url)  
+}
+
+function makeRequest(req, url){
+  if(req == 'PUT')
     console.log(api.put(url, char))
-  }
-  if(requisition == 'POST'){
+    
+  if(req == 'POST')
     console.log(api.post(url, char))
 
-  }
-  if(requisition == 'DELETE'){
+  if(req == 'DELETE')
     console.log(api.delete(url))
-  }
 }
 
 export default startButtons
