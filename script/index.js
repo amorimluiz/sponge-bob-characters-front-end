@@ -37,7 +37,7 @@ function generateCharacterCard(char){
 
 function generateIconButton(action, icon){
     let button = 
-        `<button type="button" class="${action}-button character-card-button"">
+        `<button type="button" class="${action}-button character-card-button" value="${action}"">
             <i class="${icon}"></i>
         </button>`
     return button
@@ -49,40 +49,15 @@ function sort(characters, sortFunction){
 }
 
 function startCharacterButtons(){
-    const deleteButtons = document.getElementsByClassName('delete-button')
-    for(let i = 0; i < deleteButtons.length; i++){
-        deleteButtons[i].addEventListener('click', () => {
-            const id = deleteButtons[i].parentElement.parentElement.getAttribute('char-id')
-            console.log(api.delete('delete-character', id))
-            let characters = api.get('let ')
-            render(characters)
+    const characterButtons = document.getElementsByClassName('character-card-button')
+    for(let i = 0; i < characterButtons.length; i++){
+        characterButtons[i].addEventListener('click', () => {
+            const id = characterButtons[i].parentElement.parentElement.getAttribute('char-id')
+            localStorage.setItem('char-id', id)
+            console.log(localStorage.getItem('char-id'))
+            location.href = `./pages/${characterButtons[i].value}-character.html`
         })
     }
-
-    const editButtons = document.getElementsByClassName('edit-button')
-    for(let i = 0; i < editButtons.length; i++){
-        editButtons[i].addEventListener('click', () => {
-            const id = deleteButtons[i].parentElement.parentElement.getAttribute('char-id')
-            editCharacter(id)
-            let characters = api.get('characters')
-            render(characters)
-        })
-    }
-}
-
-function editCharacter(id){
-    const card = document.getElementById(`character-card-${id}`)
-    const ps = card.getElementsByClassName('property-data')
-    const char = {
-        "name": ps[0].innerText,
-        "gender": ps[1].innerText,
-        "specie": ps[2].innerText,
-        "profession": ps[3].innerText,
-        "appearances": Number(ps[4].innerText),
-        "alive": Boolean(ps[5].innerText)
-    }
-
-    console.log(api.put(`att-character/${id}`, char))
 }
 
 function main(){
@@ -107,7 +82,7 @@ function main(){
 
     const newCharacterButton = document.getElementById('new-character-button')
     newCharacterButton.addEventListener('click', () => {
-        location.href = "./new-character.html"
+        location.href = "./pages/new-character.html"
     })
 }
 
