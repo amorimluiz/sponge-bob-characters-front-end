@@ -13,7 +13,7 @@ function main(){
 
 function adicionarPersonagem(){
   const formData = new FormData(document.getElementById('character-form'))
-  const propertys = ['name', 'gender', 'specie', 'profession', 'appearances', 'alive']
+  const propertys = ['name', 'gender', 'specie', 'profession', 'appearances']
 
   let char = {}
 
@@ -21,7 +21,9 @@ function adicionarPersonagem(){
     char[property] = formData.get(property)
   })
 
-  console.log(api.post('add-character', char).message)
+  char['alive'] = Boolean(formData.get('alive'))
+
+  console.log(api.post('add-character', char))
 }
 
 main()

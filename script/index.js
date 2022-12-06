@@ -78,8 +78,8 @@ function editCharacter(id){
         "gender": ps[1].innerText,
         "specie": ps[2].innerText,
         "profession": ps[3].innerText,
-        "appearances": ps[4].innerText,
-        "alive": true
+        "appearances": Number(ps[4].innerText),
+        "alive": Boolean(ps[5].innerText)
     }
 
     console.log(api.put(`att-character/${id}`, char))
