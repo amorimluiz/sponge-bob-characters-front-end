@@ -19,11 +19,11 @@ function generateCharacterCard(char){
     div.classList.add('character-card')
     div.setAttribute('id', `character-card-${char.id}`)
     div.setAttribute('char-id', char.id)
-    div.innerHTML += `<p class="property name"><span class="property-data" contenteditable>${char.name}</span></p>
-                      <p class="property">Gênero: <span class="property-data" contenteditable>${char.gender}</span></p>
-                      <p class="property">Espécie: <span class="property-data" contenteditable>${char.specie}</span></p>
-                      <p class="property">Profissão: <span class="property-data" contenteditable>${char.profession}</span></p>
-                      <p class="property">Aparições: <span class="property-data" contenteditable>${char.appearances}</span></p>`
+    div.innerHTML += `<p class="property name"><span class="property-data">${char.name}</span></p>
+                      <p class="property">Gênero: <span class="property-data">${char.gender}</span></p>
+                      <p class="property">Espécie: <span class="property-data">${char.specie}</span></p>
+                      <p class="property">Profissão: <span class="property-data">${char.profession}</span></p>
+                      <p class="property">Aparições: <span class="property-data">${char.appearances}</span></p>`
 
     const buttonsDiv = document.createElement('div')
     buttonsDiv.classList.add('character-buttons-div')
