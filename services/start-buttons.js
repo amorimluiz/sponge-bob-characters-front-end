@@ -1,6 +1,6 @@
 import API from "./api.js"
 const api = new API
-const home = "../index.html"
+const home = "./index.html"
 
 function startButtons(req, url){
   const cancelButton = document.getElementById('cancel-button')
