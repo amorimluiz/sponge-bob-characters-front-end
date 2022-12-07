@@ -1,7 +1,8 @@
 class API {
 
   #request = new XMLHttpRequest
-  #url = "https://spongebob-characters-api.onrender.com"
+  // #url = "https://spongebob-characters-api.onrender.com"
+  #url = "http://localhost:3000"
   
   get(url){
     this.#request.open('GET', `${this.#url}/${url}`, false)
