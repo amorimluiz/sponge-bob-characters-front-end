@@ -14,7 +14,7 @@ function setInfos(data){
 function startScript(data){
   const scr = document.createElement('script')
   scr.setAttribute('type', 'module')
-  scr.setAttribute('src', `../script/${data['script']}-character.js`)
+  scr.setAttribute('src', `./script/${data['script']}-character.js`)
   const head = document.getElementsByTagName('head')[0]
   head.appendChild(scr)
 }
